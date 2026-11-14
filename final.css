@@ -1,0 +1,212 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15, 20, 50, 0.75),
+            rgba(60, 30, 100, 0.75)
+        ),
+        url("Hi.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Main Card */
+
+.success-container {
+    width: 100%;
+    max-width: 700px;
+    padding: 55px 40px;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 28px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+
+    animation: appear 0.8s ease;
+}
+
+/* Success Icon */
+
+.success-icon {
+    width: 95px;
+    height: 95px;
+    margin: 0 auto 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #39e68c, #00b894);
+    border-radius: 50%;
+
+    box-shadow: 0 0 30px rgba(57, 230, 140, 0.35);
+
+    animation: pop 0.6s ease;
+}
+
+.success-icon span {
+    font-size: 55px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Heading */
+
+h1 {
+    color: white;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+/* Divider */
+
+.line {
+    width: 85px;
+    height: 4px;
+    background: #5cf2a5;
+    border-radius: 10px;
+    margin: 0 auto 25px;
+}
+
+/* Message */
+
+.greeting {
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.message {
+    color: #80ffbb;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.thanks {
+    color: #f0edff;
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 20px;
+}
+
+.goodbye {
+    color: #ffe08a;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* Home Button */
+
+.home-btn {
+    display: inline-block;
+    padding: 14px 30px;
+
+    background: linear-gradient(135deg, #ffffff, #d9c5ff);
+    color: #35205d;
+
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+    transform: translateY(-4px);
+    background: #5cf2a5;
+    color: #103b2b;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Animations */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 600px) {
+    .success-container {
+        padding: 40px 22px;
+        border-radius: 22px;
+    }
+
+    .success-icon {
+        width: 78px;
+        height: 78px;
+    }
+
+    .success-icon span {
+        font-size: 45px;
+    }
+
+    .greeting {
+        font-size: 20px;
+    }
+
+    .message {
+        font-size: 16px;
+    }
+
+    .thanks {
+        font-size: 13px;
+    }
+
+    .home-btn {
+        padding: 12px 22px;
+    }
+}

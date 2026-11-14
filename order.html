@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Place Your Order | R.K Fresh Flowers</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+
+<body>
+
+    <div class="order-page">
+
+        <!-- Left Side -->
+        <div class="flower-section">
+
+            <div class="brand">
+                <span class="brand-icon">✿</span>
+                R.K FRESH FLOWERS
+            </div>
+
+            <div class="flower-content">
+                <p class="small-heading">A LITTLE GIFT, A LOT OF LOVE</p>
+
+                <h1>Flowers that<br>
+                    speak from<br>
+                    the <span>heart.</span>
+                </h1>
+
+                <p class="description">
+                    Make every moment special with
+                    beautiful flowers, thoughtfully arranged
+                    just for you.
+                </p>
+
+                <div class="flower-line">❀ &nbsp; ✿ &nbsp; ❀</div>
+            </div>
+
+            <p class="image-footer">
+                Beautiful blooms for every special moment.
+            </p>
+
+        </div>
+
+        <!-- Right Side -->
+        <div class="form-section">
+
+            <a href="social.html" class="back-link">
+                ← Back to Home
+            </a>
+
+            <div class="form-heading">
+                <p class="eyebrow">LET'S MAKE IT SPECIAL</p>
+
+                <h2>Place Your Order</h2>
+
+                <p>
+                    Tell us what you have in mind.
+                    We'll take care of the rest.
+                </p>
+            </div>
+
+            <form action="order_submit.php" method="post" id="orderForm">
+
+                <div class="field">
+                    <label for="name">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Your full name"
+                        required>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required>
+                </div>
+
+                <div class="field">
+                    <label for="phone">Contact Number</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Your phone number"
+                        required>
+                </div>
+
+                <div class="field">
+                    <label for="flower">Flower Details</label>
+                    <textarea
+                        id="flower"
+                        name="flower"
+                        rows="4"
+                        placeholder="Flower type, colour, quantity and special requests..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    Submit Order <span>→</span>
+                </button>
+
+            </form>
+
+            <!-- Show server-side validation error from URL param -->
+            <script>
+            (function(){
+                const params = new URLSearchParams(window.location.search);
+                const err = params.get('error');
+                if(err){
+                    const div = document.createElement('p');
+                    div.textContent = decodeURIComponent(err);
+                    div.style.cssText = 'color:#c0392b;font-size:13px;margin-top:10px;padding:10px;background:#fdecea;border-radius:6px;';
+                    document.getElementById('orderForm').after(div);
+                }
+            })();
+            </script>
+
+            <div class="form-footer">
+                <span>✿</span>
+                Made with love, delivered with care.
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

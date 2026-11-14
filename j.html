@@ -1,0 +1,683 @@
+
+<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R.K Fresh Flowers</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f2f1ef;
+    color: #211c19;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* NAVIGATION BAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 8%;
+    background: #fffaf5;
+    box-shadow: 0 2px 8px #00000012;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #593b3b;
+    font-size: 23px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #593b3b;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #8b6f8e;
+}
+
+/* FLOWER SECTION */
+.flower-section {
+    padding: 45px 8%;
+    scroll-margin-top: 100px;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.heading h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.heading p {
+    color: #625a54;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.flower-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.flower-card {
+    background: #dfd0c1;
+    overflow: hidden;
+    box-shadow: 0 2px 6px #00000012;
+    transition: transform 0.25s;
+}
+
+.flower-card:hover {
+    transform: translateY(-4px);
+}
+
+.flower-card img {
+    width: 100%;
+    height: 200px;
+    display: block;
+    object-fit: cover;
+}
+
+.flower-info {
+    padding: 14px 10px 17px;
+}
+
+.flower-info h3 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.flower-info p {
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 63px;
+    margin-bottom: 15px;
+}
+
+.read-btn,
+.order-btn,
+#moreBtn {
+    display: inline-block;
+    border: none;
+    background: #94a991;
+    color: white;
+    padding: 10px 16px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.read-btn:hover,
+.order-btn:hover,
+#moreBtn:hover {
+    background: #71886e;
+}
+
+/* MORE FLOWERS BUTTON */
+.more-container {
+    text-align: center;
+    margin-top: 32px;
+}
+
+#moreBtn {
+    padding: 13px 25px;
+    font-size: 16px;
+}
+
+/* ORDER NOW */
+.order-container {
+    text-align: center;
+    padding: 5px 0 50px;
+}
+
+.order-btn {
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-size: 17px;
+}
+
+/* ABOUT AND CONTACT */
+.info-section {
+    padding: 45px 8%;
+    text-align: center;
+    scroll-margin-top: 100px;
+}
+
+.info-section h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.info-section p {
+    max-width: 700px;
+    margin: 0 auto 12px;
+    color: #625a54;
+    line-height: 1.8;
+}
+
+#about {
+    background: #fffaf5;
+}
+
+#contact {
+    background: #e5d8cc;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background: #593b3b;
+    color: white;
+}
+
+/* FLOWER DETAILS POPUP */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0009;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #fffaf5;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 22px;
+    position: relative;
+    border-radius: 6px;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.modal-content h2 {
+    margin: 15px 0;
+}
+
+.modal-content p {
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border: none;
+    background: white;
+    font-size: 22px;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 850px) {
+    .flower-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .navbar {
+        padding: 14px 4%;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .flower-section,
+    .info-section {
+        padding: 30px 5%;
+    }
+
+    .flower-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .heading h1 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION BAR -->
+<nav class="navbar">
+    
+        <span>R.K Fresh Flowers</span>
+
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#flowers">Flowers</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<!-- FLOWER COLLECTION -->
+<section class="flower-section" id="flowers">
+    <div class="heading">
+        <h1>Latest From Our Flowers</h1>
+        <p>Discover beautiful flowers and find the perfect gift for every occasion.</p>
+    </div>
+
+    <div class="flower-grid" id="flowerGrid"></div>
+
+    <div class="more-container">
+        <button id="moreBtn" onclick="showMoreFlowers()">
+            More Flowers 🌸
+        </button>
+    </div>
+</section>
+
+<!-- ORDER NOW BUTTON -->
+<div class="order-container">
+    <a href="order.html" class="order-btn">Order Now 🌷</a>
+</div>
+
+<!-- ABOUT SECTION -->
+<section class="info-section" id="about">
+    <h2>About R.K Fresh Flowers</h2>
+    <p>
+        Welcome to R.K Fresh Flowers! We bring beautiful flowers to your
+        special moments. Discover lovely bouquets for birthdays, weddings,
+        anniversaries and everyday surprises.
+    </p>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="info-section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Want to order flowers or ask about a bouquet? Contact our flower shop.</p>
+    <p>Email: rkfreshflowers@example.com</p>
+    <p>Phone: Add your shop phone number here</p>
+</section>
+
+<footer>
+    <p>© 2026 R.K Fresh Flowers. All Rights Reserved.</p>
+</footer>
+
+<!-- FLOWER DETAILS POPUP -->
+<div class="modal" id="flowerModal" onclick="closeOutside(event)">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeFlowerDetails()">×</button>
+        <img id="modalImage" src="" alt="Flower">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+        <p><strong>Special Features:</strong> <span id="modalFeatures"></span></p>
+        <p><strong>Care Tips:</strong> <span id="modalCare"></span></p>
+        <p><strong>Price:</strong> <span id="modalPrice"></span></p>
+    </div>
+</div>
+
+<script>
+const flowers = [
+    {
+        name: "Red Rose",
+        image: "https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=700&q=80",
+        short: "A timeless flower that represents love and romance.",
+        description: "Red roses are popular gifts for anniversaries, birthdays and romantic occasions.",
+        features: "Beautiful red petals and a classic fragrance.",
+        care: "Trim stems diagonally and change vase water regularly.",
+        price: "Example: Rs. 350 per stem"
+    },
+    {
+        name: "Sunflower",
+        image: "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=700&q=80",
+        short: "A bright flower that brings warmth and happiness.",
+        description: "Sunflowers are cheerful flowers used in bouquets and decorations.",
+        features: "Large golden petals and a dark central disk.",
+        care: "Keep in clean water and bright indirect light.",
+        price: "Example: Rs. 500 per stem"
+    },
+    {
+        name: "Tulip",
+        image: "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=700&q=80",
+        short: "An elegant flower with smooth, colourful petals.",
+        description: "Tulips are popular for gifts and home decorations.",
+        features: "Cup-shaped flowers in many colours.",
+        care: "Use a clean vase and keep away from direct heat.",
+        price: "Example: Rs. 400 per stem"
+    },
+    {
+        name: "White Lily",
+        image: "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=700&q=80",
+        short: "A graceful flower for special occasions.",
+        description: "Lilies are often included in elegant bouquets and event arrangements.",
+        features: "Large petals and a striking shape.",
+        care: "Change water frequently and remove fading blooms.",
+        price: "Example: Rs. 600 per stem"
+    },
+    
+    {
+        name: "Pink Gerbera",
+        image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80",
+        short: "A colourful flower for cheerful bouquets.",
+        description: "Gerberas are often used in bright bouquets and birthday arrangements.",
+        features: "Daisy-like petals in vivid colours.",
+        care: "Keep the vase clean and remove leaves below the water.",
+        price: "Example: Rs. 300 per stem"
+    },
+    {
+        name: "Daisy",
+        image: "https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=700&q=80",
+        short: "A simple flower with a fresh, natural look.",
+        description: "Daisies make lovely additions to casual bouquets.",
+        features: "Petals around a central disk.",
+        care: "Keep in fresh water and remove wilted flowers.",
+        price: "Example: Rs. 250 per stem"
+    },
+    {
+        name: "Marigold",
+        image: "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=700&q=80",
+        short: "A golden flower for festive decorations.",
+        description: "Marigolds are popular for garlands and traditional celebrations.",
+        features: "Bright orange or yellow clustered petals.",
+        care: "Keep fresh flowers cool and away from direct sunlight.",
+        price: "Example: Rs. 200 per bunch"
+    },
+    {
+        name: "Lavender",
+        image: "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=700&q=80",
+        short: "A purple flower known for its fragrance.",
+        description: "Lavender is used in floral displays and fragrant dried arrangements.",
+        features: "Purple flower spikes and a distinctive scent.",
+        care: "Store dried lavender in a dry place.",
+        price: "Example: Rs. 700 per bunch"
+    },
+    {
+        name: "Carnation",
+        image: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=700&q=80",
+        short: "A ruffled flower that adds texture to bouquets.",
+        description: "Carnations are popular for celebrations and flower gifts.",
+        features: "Frilled petals in many colours.",
+        care: "Change the water every few days.",
+        price: "Example: Rs. 300 per stem"
+    },
+    {
+        name: "Peony",
+        image: "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=700&q=80",
+        short: "A full flower with a romantic appearance.",
+        description: "Peonies are valued for their lush blooms in premium bouquets.",
+        features: "Layered petals and a rounded bloom.",
+        care: "Keep stems in clean water in a cool location.",
+        price: "Example: Rs. 1,000 per stem"
+    },
+    
+    {
+        name: "Chrysanthemum",
+        image: "https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=700&q=80",
+        short: "A full flower that gives bouquets rich texture.",
+        description: "Chrysanthemums are commonly used in flower arrangements.",
+        features: "Layered petals and varied colours.",
+        care: "Remove lower leaves and replace vase water regularly.",
+        price: "Example: Rs. 300 per stem"
+    },
+    {
+        name: "Hydrangea",
+        image: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=700&q=80",
+        short: "A clustered flower with a soft, rounded shape.",
+        description: "Hydrangeas make striking arrangements for weddings and events.",
+        features: "Clusters of small flowers forming a large bloom.",
+        care: "Keep stems hydrated and away from hot sunlight.",
+        price: "Example: Rs. 850 per stem"
+    },
+    {
+        name: "Magnolia",
+        image: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=700&q=80",
+        short: "A graceful bloom with broad petals.",
+        description: "Magnolia flowers are admired for their striking shape and fragrance.",
+        features: "Large, smooth petals.",
+        care: "Handle petals gently and keep stems hydrated.",
+        price: "Example: Rs. 750 per stem"
+    },
+    
+    {
+        name: "Baby's Breath",
+        image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=700&q=80",
+        short: "Tiny blooms that add a delicate touch to bouquets.",
+        description: "Baby's breath is often used as a filler flower in wedding bouquets.",
+        features: "Small clusters of flowers.",
+        care: "Keep cut stems in fresh water.",
+        price: "Example: Rs. 500 per bunch"
+    },
+    
+    {
+        name: "Pink Rose",
+        image: "https://images.unsplash.com/photo-1455659817273-f96807779a8a?auto=format&fit=crop&w=700&q=80",
+        short: "A lovely flower often associated with appreciation.",
+        description: "Pink roses are a popular choice for thank-you gifts and celebrations.",
+        features: "Soft pink petals and a classic rose shape.",
+        care: "Trim stems and change the water regularly.",
+        price: "Example: Rs. 350 per stem"
+    },
+    {
+        name: "Purple Iris",
+        image: "https://images.unsplash.com/photo-1494625927555-6ec4433b1571?auto=format&fit=crop&w=700&q=80",
+        short: "An elegant flower with distinctive petals.",
+        description: "Irises bring dramatic colour and structure to arrangements.",
+        features: "Distinctive petals in purple and blue shades.",
+        care: "Keep cut flowers in clean water.",
+        price: "Example: Rs. 500 per stem"
+    },
+    {
+        name: "Sweet Pea",
+        image: "https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=700&q=80",
+        short: "A delicate flower with a romantic look.",
+        description: "Sweet peas are valued for their gentle appearance and fragrance.",
+        features: "Soft petals and delicate stems.",
+        care: "Keep cool and provide fresh water daily.",
+        price: "Example: Rs. 400 per bunch"
+    },
+    {
+        name: "Gardenia",
+        image: "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=700&q=80",
+        short: "A creamy white flower with a rich fragrance.",
+        description: "Gardenias are popular for their elegant appearance and scent.",
+        features: "Glossy leaves and creamy petals.",
+        care: "Handle carefully and keep cut blooms cool.",
+        price: "Example: Rs. 700 per stem"
+    },
+    {
+        name: "Zinnia",
+        image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80",
+        short: "A bright flower available in cheerful colours.",
+        description: "Zinnias are attractive flowers for bouquets and garden displays.",
+        features: "Bold, colourful petals.",
+        care: "Place cut stems in clean water.",
+        price: "Example: Rs. 250 per stem"
+    },
+    {
+        name: "Lotus",
+        image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=700&q=80",
+        short: "A graceful flower with an elegant appearance.",
+        description: "Lotus flowers are admired in ornamental ponds and traditional displays.",
+        features: "Layered petals and a distinctive centre.",
+        care: "Living lotus plants need suitable aquatic growing conditions.",
+        price: "Example: Rs. 600 per flower"
+    },
+    {
+        name: "Ranunculus",
+        image: "https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=700&q=80",
+        short: "A layered flower with a soft, full appearance.",
+        description: "Ranunculus flowers are popular in decorative and wedding bouquets.",
+        features: "Many thin layers of delicate petals.",
+        care: "Keep stems hydrated and away from strong heat.",
+        price: "Example: Rs. 500 per stem"
+    },
+    {
+        name: "Freesia",
+        image: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=700&q=80",
+        short: "A fragrant flower with a graceful shape.",
+        description: "Freesias are used in bouquets for their delicate appearance and scent.",
+        features: "Trumpet-shaped blooms along a stem.",
+        care: "Change vase water regularly and trim stems.",
+        price: "Example: Rs. 400 per stem"
+    },
+    {
+        name: "Blue Cornflower",
+        image: "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=700&q=80",
+        short: "A colourful flower with a striking appearance.",
+        description: "Cornflowers add a natural touch to mixed bouquets.",
+        features: "Fringed petals, commonly in blue shades.",
+        care: "Keep cut stems in fresh water.",
+        price: "Example: Rs. 300 per stem"
+    },
+    {
+        name: "Mixed Bouquet",
+        image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=700&q=80",
+        short: "A beautiful combination of flowers for special occasions.",
+        description: "Mixed bouquets combine different flower types and colours into one gift.",
+        features: "A varied selection of seasonal flowers.",
+        care: "Trim stems and change the water regularly.",
+        price: "Example: Rs. 2,500 per bouquet"
+    }
+];
+
+const flowerGrid = document.getElementById("flowerGrid");
+const moreBtn = document.getElementById("moreBtn");
+let visibleCount = 20;
+
+function renderFlowers() {
+    flowerGrid.innerHTML = "";
+
+    flowers.slice(0, visibleCount).forEach((flower, index) => {
+        const card = document.createElement("article");
+        card.className = "flower-card";
+
+        const img = document.createElement("img");
+        img.src = flower.image;
+        img.alt = flower.name;
+        img.loading = "lazy";
+        img.onerror = function() {
+            this.onerror = null;
+            this.src = "https://placehold.co/700x400/f0e0d7/604d45?text=Flower";
+        };
+
+        const info = document.createElement("div");
+        info.className = "flower-info";
+
+        const title = document.createElement("h3");
+        title.textContent = flower.name;
+
+        const shortDescription = document.createElement("p");
+        shortDescription.textContent = flower.short;
+
+        const button = document.createElement("button");
+        button.className = "read-btn";
+        button.textContent = "Read More";
+        button.addEventListener("click", () => showFlowerDetails(index));
+
+        info.append(title, shortDescription, button);
+        card.append(img, info);
+        flowerGrid.appendChild(card);
+    });
+
+    moreBtn.style.display =
+        visibleCount >= flowers.length ? "none" : "inline-block";
+}
+
+function showMoreFlowers() {
+    visibleCount = Math.min(visibleCount + 10, flowers.length);
+    renderFlowers();
+}
+
+function showFlowerDetails(index) {
+    const flower = flowers[index];
+
+    document.getElementById("modalImage").src = flower.image;
+    document.getElementById("modalTitle").textContent = flower.name;
+    document.getElementById("modalDescription").textContent = flower.description;
+    document.getElementById("modalFeatures").textContent = flower.features;
+    document.getElementById("modalCare").textContent = flower.care;
+    document.getElementById("modalPrice").textContent = flower.price;
+
+    document.getElementById("flowerModal").style.display = "flex";
+}
+
+function closeFlowerDetails() {
+    document.getElementById("flowerModal").style.display = "none";
+}
+
+function closeOutside(event) {
+    if (event.target.id === "flowerModal") {
+        closeFlowerDetails();
+    }
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        closeFlowerDetails();
+    }
+});
+
+renderFlowers();
+</script>
+
+</body>
+</html>
+```
